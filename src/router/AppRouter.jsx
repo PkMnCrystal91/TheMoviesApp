@@ -1,13 +1,18 @@
-import React from "react";
 import { LoginPage } from "../auth";
 import { Home } from "../kodigo-app";
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 
 export const AppRouter = () => {
+  const authStatus = "not-authenticated";
   return (
     <Routes>
-      <Route path="/auth" element={<LoginPage />} />
-      <Route path="/home" element={<Home />} />
+      {authStatus === "not-authenticated" ? (
+        <Route path="/auth/*" element={<LoginPage />} />
+      ) : (
+        <Route path="/home" element={<Home />} />
+      )}
+
+      <Route path="/*" element={<Navigate to="/auth/login" />} />
     </Routes>
   );
 };
