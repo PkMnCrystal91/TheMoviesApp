@@ -1,1 +1,1 @@
-export * as appApi from "./appApi";
+export { default as appApi } from "./appApi";

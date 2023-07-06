@@ -1,18 +1,28 @@
 import { LoginPage } from "../auth";
+import { useAuthStore } from "../hooks/useAuthStore";
 import { Home } from "../kodigo-app";
 import { Navigate, Route, Routes } from "react-router-dom";
 
 export const AppRouter = () => {
-  const authStatus = "not-authenticated";
+  const { status, user } = useAuthStore();
+
+  if (status === "checking") {
+    return <h3>Cargando...</h3>;
+  }
   return (
     <Routes>
-      {authStatus === "not-authenticated" ? (
-        <Route path="/auth/*" element={<LoginPage />} />
+      {user.token ? (
+        <>
+          <Route path="/" element={<Home />} />
+          <Route path="/*" element={<Navigate to="/" />} />
+        </>
       ) : (
-        <Route path="/home" element={<Home />} />
-      )}
+        <>
+          <Route path="/auth/*" element={<LoginPage />} />
 
-      <Route path="/*" element={<Navigate to="/auth/login" />} />
+          <Route path="/*" element={<Navigate to="/auth/login" />} />
+        </>
+      )}
     </Routes>
   );
 };
