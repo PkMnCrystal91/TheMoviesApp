@@ -27,6 +27,22 @@ export const useAuthStore = () => {
     }
   };
 
+  const startLogout = () => {
+    localStorage.clear();
+    dispatch(onLogout());
+  };
+
+  const checkToken = () => {
+    const token = localStorage.getItem("token");
+    if (!token) return dispatch(onLogout());
+
+    try {
+      localStorage.setItem("token", token);
+    } catch (error) {
+      dispatch(onLogout());
+    }
+  };
+
   return {
     // Propiedades
     status,
@@ -35,5 +51,7 @@ export const useAuthStore = () => {
 
     // Funciones
     startLogin,
+    startLogout,
+    checkToken,
   };
 };

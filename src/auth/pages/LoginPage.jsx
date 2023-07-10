@@ -46,7 +46,7 @@ export const LoginPage = () => {
         value={loginPassword}
         onChange={onLoginInputChange}
       />
-      <button>Loggin</button>
+      <button className="btn btn-primary">Loggin</button>
     </form>
   );
 };
