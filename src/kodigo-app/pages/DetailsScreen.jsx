@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
+import "../../styles/DetailsScreen.css";
+
 export const DetailsScreen = () => {
   const [movie, setMovie] = useState({});
   const params = useParams();
@@ -19,12 +21,20 @@ export const DetailsScreen = () => {
     getMovie();
   }, []);
 
-  let img_path = "https://image.tmdb.org/t/p/w500";
+  let img_path = "https://image.tmdb.org/t/p/w300";
 
   return (
-    <div>
-      {movie.original_title}
-      <img src={img_path + movie.poster_path} alt="" />
+    <div className="conainer-fluid">
+      <div id="flex-box" className="d-flex gap-3 m-4">
+        <img src={img_path + movie.poster_path} alt="" />
+
+        <div id="second-child" className="">
+          <h2>{movie.title}</h2>
+          <p>Release date: {movie.release_date}</p>
+          <p className="w-75">Overview: {movie.overview}</p>
+          <p></p>
+        </div>
+      </div>
     </div>
   );
 };
