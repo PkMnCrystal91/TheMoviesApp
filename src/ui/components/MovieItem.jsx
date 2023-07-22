@@ -1,6 +1,6 @@
+import { Link } from "react-router-dom";
+import { DetailsScreen } from "../../kodigo-app";
 import { TruncatedText } from "./TruncatedText";
-
-TruncatedText;
 
 export const MovieItem = (movie) => {
   const cardStyle = {
@@ -13,15 +13,17 @@ export const MovieItem = (movie) => {
 
   return (
     <div className="card mx-3 my-4" style={cardStyle}>
-      <img
-        className="card-img-top"
-        src={img_path + movie.info.poster_path}
-        alt="Card image cap"
-      ></img>
-      <div className="card-body">
-        <h5 className="card-title">{movie.info.title}</h5>
-        <TruncatedText text={movie.info.overview} maxLength={maxLength} />
-      </div>
+      <Link to={`/movie/${movie.info.id}`}>
+        <img
+          className="card-img-top"
+          src={img_path + movie.info.poster_path}
+          alt="Card image cap"
+        ></img>
+        <div className="card-body">
+          <h5 className="card-title">{movie.info.title}</h5>
+          <TruncatedText text={movie.info.overview} maxLength={maxLength} />
+        </div>
+      </Link>
     </div>
   );
 };

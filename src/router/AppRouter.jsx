@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { LoginPage } from "../auth";
 import { useAuthStore } from "../hooks/useAuthStore";
-import { Home } from "../kodigo-app";
+import { DetailsScreen, Home } from "../kodigo-app";
 import { Navigate, Route, Routes } from "react-router-dom";
 import { Navbar } from "../ui/components/Navbar";
 
@@ -19,6 +19,7 @@ export const AppRouter = () => {
           <>
             <Route path="/" element={<Home />} />
             <Route path="/*" element={<Navigate to="/" />} />
+            <Route path="/movie/:id" element={<DetailsScreen />} />
           </>
         ) : (
           <>

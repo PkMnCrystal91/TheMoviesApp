@@ -7,7 +7,6 @@ export const MovieGrid = () => {
 
   useEffect(() => {
     getPopularMovies().then((data) => {
-      console.log(data.results);
       setMovieData(data.results);
     });
   }, []);
