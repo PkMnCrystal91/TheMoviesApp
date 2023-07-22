@@ -13,3 +13,14 @@ export const getPopularMovies = () => {
       throw error;
     });
 };
+
+export const getMovieById = (paramId) => {
+  const url = `${base_url}/movie/${paramId}?${API_key}`;
+
+  return axios
+    .get(url)
+    .then((response) => response.data)
+    .catch((error) => {
+      throw error;
+    });
+};

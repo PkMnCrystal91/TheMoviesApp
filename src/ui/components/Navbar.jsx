@@ -1,6 +1,8 @@
 import { useAuthStore } from "../../hooks/useAuthStore";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 
+import "../../styles/Navbar.css";
+
 export const Navbar = () => {
   const { startLogout, user } = useAuthStore();
 
@@ -12,9 +14,10 @@ export const Navbar = () => {
       replace: true,
     });
   };
+
   return (
     <nav className="navbar navbar-expand-sm navbar-dark bg-dark p-2">
-      <div className="container-fluid">
+      <div id="form-container" className="container-fluid">
         <Link className="navbar-brand" to="/">
           Movies App
         </Link>
