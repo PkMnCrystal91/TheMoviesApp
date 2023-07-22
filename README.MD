@@ -1,11 +1,18 @@
-# Kodigo App
-
-## Developer pasos
-
-1. Renombrar el archivo .env.template por .env
-2. Hacer los cambios respectivos en las variables de entorno.
+# The Movies App
 
 ```
-VITE_API_URL=https://reqres.in/api/login
+##Installation 
+- yarn
 
-```
+###Credencials
+
+{
+"email": "eve.holt@reqres.in",
+"password": "cityslicka"
+}
+
+to get 
+
+{
+    "token": "QpwL5tke4Pnpja7X4"
+}
