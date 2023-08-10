@@ -3,7 +3,9 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 
 import "../../styles/Navbar.css";
 
-export const Navbar = () => {
+let arr = ["Popular", "Theatre", "Comedie"];
+
+export const Navbar = ({ onChangeCategory }) => {
   const { startLogout, user } = useAuthStore();
 
   const navigate = useNavigate();
@@ -22,6 +24,27 @@ export const Navbar = () => {
           Movies App
         </Link>
 
+        <div className="navbar-collapse">
+          <div className="navbar-nav">
+            {arr.map((value, pos) => {
+              return (
+                <NavLink
+                  key={pos}
+                  name={value}
+                  className={({ isActive }) =>
+                    `nav-item nav-link  ${isActive ? "active" : ""}`
+                  }
+                  onClick={(e) => {
+                    onChangeCategory(e.target.name);
+                  }}
+                >
+                  {value}
+                </NavLink>
+              );
+            })}
+          </div>
+        </div>
+
         <div className="d-flex">
           <form className="d-flex">
             <input
@@ -35,7 +58,7 @@ export const Navbar = () => {
             </button>
           </form>
           <button
-            onClick={startLogout}
+            onClick={onLogout}
             className="btn btn-outline-danger ms-2"
             type="submit"
           >

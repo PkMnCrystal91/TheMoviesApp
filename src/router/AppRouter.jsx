@@ -1,9 +1,8 @@
-import { useState, useEffect } from "react";
 import { LoginPage } from "../auth";
 import { useAuthStore } from "../hooks/useAuthStore";
-import { DetailsScreen, Home } from "../kodigo-app";
+import { Home } from "../kodigo-app";
+import { DetailsScreen } from "../ui/components";
 import { Navigate, Route, Routes } from "react-router-dom";
-import { Navbar } from "../ui/components/Navbar";
 
 export const AppRouter = () => {
   const { status, user } = useAuthStore();
@@ -13,7 +12,6 @@ export const AppRouter = () => {
   }
   return (
     <>
-      {user.token ? <Navbar /> : ""}
       <Routes>
         {user.token ? (
           <>

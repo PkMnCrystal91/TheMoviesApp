@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 import { MovieItem } from "./MovieItem";
-import { getPopularMovies } from "../../api";
+import { getMoviesByType } from "../../api";
 
-export const MovieGrid = () => {
+export const MovieGrid = ({ category }) => {
   const [movieData, setMovieData] = useState([]);
 
   useEffect(() => {
-    getPopularMovies().then((data) => {
+    getMoviesByType(category).then((data) => {
       setMovieData(data.results);
     });
   }, []);

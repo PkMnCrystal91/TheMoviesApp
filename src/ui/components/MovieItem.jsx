@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { DetailsScreen } from "../../kodigo-app";
 import { TruncatedText } from "./TruncatedText";
 
 export const MovieItem = (movie) => {
